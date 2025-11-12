@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Project2</string>
+    <string name="welcome_please_sign_in_3">Welcome. Please Sign In. :3</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login!</string>
 </resources>
