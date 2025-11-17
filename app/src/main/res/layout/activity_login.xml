@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/welcome_please_sign_in_3"
+        android:text="Welcome. Please Sign in."
         android:textSize="32sp"
         android:gravity="center"
         />
@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:hint="@string/username"
+        android:hint="Username"
         app:layout_constraintTop_toBottomOf="@id/titleLoginTextView"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:hint="@string/password"
+        android:hint="Password"
         app:layout_constraintTop_toBottomOf="@id/userNameLoginEditText"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_margin="16dp"
-        android:text="@string/login"
+        android:text="Login"
         android:textColorLink="#03A9F4"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
