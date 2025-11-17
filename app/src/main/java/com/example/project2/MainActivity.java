@@ -1,5 +1,6 @@
 package com.example.project2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,4 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
+    static Intent mainActivityIntentFactory(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
 }

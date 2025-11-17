@@ -8,13 +8,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivityLandingPageBinding;
@@ -23,7 +20,7 @@ import database.ProduceLogRepository;
 import database.entities.User;
 
 public class LandingPage extends AppCompatActivity {
-    private static final String MAIN_ACTIVITY_USER_ID = "com.example.project2.MAIN_ACTIVITY_USER_ID";
+    private static final String LANDING_PAGE_ACTIVITY_USER_ID = "com.example.project2.MAIN_ACTIVITY_USER_ID";
     static final String SHARED_PREFERENCE_USERID_KEY = "com.example.project2.SHARED_PREFERENCE_USERID_KEY";
     static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
     private static final int LOGGED_OUT = -1;
@@ -44,7 +41,12 @@ public class LandingPage extends AppCompatActivity {
         repository = ProduceLogRepository.getRepository(getApplication());
         loginUser(savedInstanceState);
 
-
+        binding.buttonLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutDialog();
+            }
+        });
 
         // Seemingly we don't need the chunk below.
 
@@ -68,7 +70,7 @@ public class LandingPage extends AppCompatActivity {
             loggedInUserId = savedInstanceState.getInt(SAVED_INSTANCE_STATE_USERID_KEY, LOGGED_OUT);
         }
         if (loggedInUserId == LOGGED_OUT) {
-            loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+            loggedInUserId = getIntent().getIntExtra(LANDING_PAGE_ACTIVITY_USER_ID, LOGGED_OUT);
         }
         if (loggedInUserId == LOGGED_OUT) {
             return;
@@ -79,6 +81,10 @@ public class LandingPage extends AppCompatActivity {
             this.user = user;
             if (user != null) {
                 invalidateOptionsMenu();
+                binding.HelloUsername.setText(this.user.getUsername());
+                if (this.user.isAdmin()) {
+                    binding.buttonAdminAccess.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -109,9 +115,9 @@ public class LandingPage extends AppCompatActivity {
         loggedInUserId = LOGGED_OUT;
         updateSharedPreference();
 
-        getIntent().putExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        getIntent().putExtra(LANDING_PAGE_ACTIVITY_USER_ID, LOGGED_OUT);
 
-        startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
+        startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext()));
     }
 
     @Override
@@ -146,8 +152,8 @@ public class LandingPage extends AppCompatActivity {
     }
 
     static Intent landingActivityIntentFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        Intent intent = new Intent(context, LandingPage.class);
+        intent.putExtra(LANDING_PAGE_ACTIVITY_USER_ID, userId);
         return intent;
     }
 }
