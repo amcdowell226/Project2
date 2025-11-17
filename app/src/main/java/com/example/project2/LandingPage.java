@@ -45,6 +45,7 @@ public class LandingPage extends AppCompatActivity {
         loginUser(savedInstanceState);
 
 
+
         // Seemingly we don't need the chunk below.
 
         //User is not logged in at this point, go to login screen
@@ -128,6 +129,11 @@ public class LandingPage extends AppCompatActivity {
                 return false;
             }
         });
+
+        if (user.isAdmin()) {
+            MenuItem adminBtn = menu.findItem(R.id.buttonAdminAccess);
+            adminBtn.setVisible(true);
+        }
         return true;
     }
 
