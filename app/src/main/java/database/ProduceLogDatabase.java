@@ -12,11 +12,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import database.entities.Product;
 import database.entities.User;
 
 @Database(entities = {User.class}, version = 1)
 public abstract class ProduceLogDatabase extends RoomDatabase {
-    public static final String USER_TABLE = "usertable";
+    public static final String USER_TABLE = "userTable";
+    public static final String PRODUCT_TABLE = "productTable";
     private static final String DATABASE_NAME = "ProduceLogDatabase";
     private static volatile ProduceLogDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -54,6 +56,15 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
                     dao.insert(admin);
                     User testUser1 = new User("testuser1", "testuser1");
                     dao.insert(testUser1);
+
+                    ProductDAO pDAO = INSTANCE.productDAO();
+                    pDAO.deleteAll();
+                    Product beef = new Product("beef", "meat");
+                    pDAO.insert(beef);
+                    Product apple = new Product("apple", "fruit");
+                    pDAO.insert(apple);
+                    Product tomato = new Product("tomato", "vegetable");
+                    pDAO.insert(tomato);
                 });
             } catch (Exception e) {
                 System.out.println(e);
@@ -62,4 +73,5 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
     };
 
     public abstract UserDAO userDAO();
+    public abstract ProductDAO productDAO();
 }
