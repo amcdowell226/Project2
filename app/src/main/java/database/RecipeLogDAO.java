@@ -20,15 +20,15 @@ public interface RecipeLogDAO {
     @Delete
     void delete(RecipeLog recipe);
 
-    @Query("SELECT * FROM " + "allRecipes" + " ORDER BY name")
+    @Query("SELECT * FROM " + ProduceLogDatabase.RECIPES_TABLE + " ORDER BY id")
     LiveData<List<Product>> getAllRecipes();
 
-    @Query("DELETE from " + "produceTable")
+    @Query("DELETE from " + ProduceLogDatabase.RECIPES_TABLE)
     void deleteAll();
 
-    @Query("SELECT * from " + "produceTable" + " WHERE id == :id")
+    @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE + " WHERE id == :id")
     LiveData<RecipeLog> getRecipeById(int id);
 
-    @Query("SELECT * from " + "produceTable" + " WHERE userId == :userId")
+    @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE + " WHERE userId == :userId")
     LiveData<RecipeLog> getRecipesByUserId(int userId);
 }

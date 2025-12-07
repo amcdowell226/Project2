@@ -19,18 +19,18 @@ public interface ProductDAO {
     @Delete
     void delete(Product product);
 
-    @Query("SELECT * FROM " + "produceTable" + " ORDER BY name")
+    @Query("SELECT * FROM " + ProduceLogDatabase.PRODUCT_TABLE + " ORDER BY name")
     LiveData<List<Product>> getAllProducts();
 
-    @Query("DELETE from " + "produceTable")
+    @Query("DELETE from " + ProduceLogDatabase.PRODUCT_TABLE)
     void deleteAll();
 
-    @Query("SELECT * from " + "produceTable" + " WHERE name == :productName")
+    @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE name == :productName")
     LiveData<Product> getProduceByName(String productName);
 
-    @Query("SELECT * from " + "produceTable" + " WHERE type == :productType")
+    @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE type == :productType")
     LiveData<Product> getProduceByType(String productType);
 
-    @Query("SELECT * from " + "produceTable" + " WHERE id == :productId")
+    @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE id == :productId")
     LiveData<Product> getProduceByProductId(int productId);
 }
