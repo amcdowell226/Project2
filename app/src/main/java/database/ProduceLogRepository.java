@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -64,6 +65,10 @@ public class ProduceLogRepository {
 
     public LiveData<Product> getProduceByType(String productType) {
         return productDAO.getProduceByType(productType);
+    }
+
+    public LiveData<List<Product>> getAllProduceByType(String productType) {
+        return productDAO.getAllProduceByType(productType);
     }
 
     public LiveData<Product> getProduceByProductId(int productId) {

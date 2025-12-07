@@ -12,7 +12,7 @@ import database.ProduceLogDatabase;
 
 @Entity(tableName = ProduceLogDatabase.PRODUCT_TABLE)
 public class Product {
-    private static final List<String> types = new ArrayList<>(
+    public static final List<String> types = new ArrayList<>(
             Arrays.asList("meat", "pasta", "vegetable", "fruit", "seasoning")
     );
     @PrimaryKey(autoGenerate = true)
@@ -62,6 +62,9 @@ public class Product {
     }
 
     public void setType(String type) {
+        if(!types.contains(type.toLowerCase())) {
+            type = "seasoning";
+        }
         this.type = type;
     }
 }
