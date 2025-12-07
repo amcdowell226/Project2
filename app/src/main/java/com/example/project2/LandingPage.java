@@ -48,13 +48,12 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
-        // Seemingly we don't need the chunk below.
-
-        //User is not logged in at this point, go to login screen
-//        if (loggedInUserId == -1) {
-//            Intent intent = MainActivity.loginIntentFactory(getApplicationContext());
-//            startActivity(intent);
-//        }
+        binding.buttonSavedRecipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(SavedRecipes.savedRecipesActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
 
         updateSharedPreference();
     }
@@ -122,19 +121,9 @@ public class LandingPage extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.buttonLogOut);
-        item.setVisible(true);
         if (user == null) {
             return false;
         }
-        item.setTitle(user.getUsername());
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
-                showLogoutDialog();
-                return false;
-            }
-        });
 
         if (user.isAdmin()) {
             MenuItem adminBtn = menu.findItem(R.id.buttonAdminAccess);

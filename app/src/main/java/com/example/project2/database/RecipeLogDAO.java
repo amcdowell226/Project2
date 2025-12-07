@@ -30,5 +30,5 @@ public interface RecipeLogDAO {
     LiveData<RecipeLog> getRecipeById(int id);
 
     @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE + " WHERE userId == :userId")
-    LiveData<RecipeLog> getRecipesByUserId(int userId);
+    LiveData<List<RecipeLog>> getRecipesByUserId(int userId);
 }
