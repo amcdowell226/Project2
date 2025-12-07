@@ -17,10 +17,10 @@ public interface ProductDAO {
     void insert(Product... product);
 
     @Delete
-    void delete(Product user);
+    void delete(Product product);
 
     @Query("SELECT * FROM " + "produceTable" + " ORDER BY name")
-    LiveData<List<Product>> getAllUsers();
+    LiveData<List<Product>> getAllProducts();
 
     @Query("DELETE from " + "produceTable")
     void deleteAll();
@@ -32,5 +32,5 @@ public interface ProductDAO {
     LiveData<Product> getProduceByType(String productType);
 
     @Query("SELECT * from " + "produceTable" + " WHERE id == :productId")
-    LiveData<Product> getUserByProductId(int productId);
+    LiveData<Product> getProduceByProductId(int productId);
 }

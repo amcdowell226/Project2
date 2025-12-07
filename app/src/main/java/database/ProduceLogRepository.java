@@ -10,17 +10,23 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import database.entities.Product;
+import database.entities.RecipeLog;
 import database.entities.User;
 
 public class ProduceLogRepository {
     private final UserDAO userDAO;
-//    private ArrayList<AllProduce> allProduce;
+    private final ProductDAO productDAO;
+    private final RecipeLogDAO recipeLogDAO;
+    private ArrayList<Product> allProduce;
 
     private static ProduceLogRepository repository;
 
     private ProduceLogRepository(Application application) {
         ProduceLogDatabase db = ProduceLogDatabase.getDatabase(application);
         this.userDAO = db.userDAO();
+        this.productDAO = db.productDAO();
+        this.recipeLogDAO = db.recipeLogDAO();
     }
 
     public static ProduceLogRepository getRepository(Application application) {
@@ -51,5 +57,47 @@ public class ProduceLogRepository {
     public LiveData<User> getUserByUserId(int userId) {
         return userDAO.getUserByUserId(userId);
     }
+
+    public LiveData<Product> getProduceByName(String productName) {
+        return productDAO.getProduceByName(productName);
+    }
+
+    public LiveData<Product> getProduceByType(String productType) {
+        return productDAO.getProduceByType(productType);
+    }
+
+    public LiveData<Product> getProduceByProductId(int productId) {
+        return productDAO.getProduceByProductId(productId);
+    }
+
+    public LiveData<RecipeLog> getRecipeById(int recipeId) {
+        return recipeLogDAO.getRecipeById(recipeId);
+    }
+
+    public LiveData<RecipeLog> getRecipeByUserId(int userId) {
+        return recipeLogDAO.getRecipesByUserId(userId);
+    }
+
+    public void insertUser(User... user) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.insert(user);
+        });
+    }
+
+    public void insertProduct(Product... product) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            productDAO.insert(product);
+        });
+    }
+
+    public void insertRecipe(RecipeLog recipe) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            recipeLogDAO.insert(recipe);
+        });
+    }
+
 
 }

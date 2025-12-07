@@ -13,12 +13,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import database.entities.Product;
+import database.entities.RecipeLog;
 import database.entities.User;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Product.class, RecipeLog.class}, version = 2)
 public abstract class ProduceLogDatabase extends RoomDatabase {
     public static final String USER_TABLE = "userTable";
     public static final String PRODUCT_TABLE = "productTable";
+    public static final String RECIPES_TABLE = "allRecipes";
     private static final String DATABASE_NAME = "ProduceLogDatabase";
     private static volatile ProduceLogDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -74,4 +76,5 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
 
     public abstract UserDAO userDAO();
     public abstract ProductDAO productDAO();
+    public abstract RecipeLogDAO recipeLogDAO();
 }
