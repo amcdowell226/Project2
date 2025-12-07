@@ -30,11 +30,11 @@
         app:layout_constraintTop_toBottomOf="@+id/HelloText" />
 
     <Button
-        android:id="@+id/buttonShoppingList"
+        android:id="@+id/buttonSavedRecipes"
         android:layout_width="125dp"
         android:layout_height="80dp"
         android:layout_marginTop="64dp"
-        android:text="@string/go_to_shopping_list"
+        android:text="Saved Recipes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HelloUsername" />
@@ -47,7 +47,7 @@
         android:text="@string/random_recipe_generator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonShoppingList" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSavedRecipes" />
 
     <Button
         android:id="@+id/buttonAdminAccess"
@@ -65,7 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/HelloUsername"
-        app:layout_constraintTop_toBottomOf="@+id/HelloUsername" />
+        android:layout_marginBottom="55dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/HelloUsername"
+        app:layout_constraintStart_toEndOf="@+id/HelloUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>

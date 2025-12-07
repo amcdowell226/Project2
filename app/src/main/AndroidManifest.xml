@@ -12,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project2">
         <activity
-            android:name=".EditUsersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminActivity"
+            android:name=".SavedRecipes"
             android:exported="false" />
         <activity
             android:name=".LandingPage"
