@@ -1,4 +1,4 @@
-package database;
+package com.example.project2.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -9,8 +9,8 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import database.entities.Product;
-import database.entities.RecipeLog;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
 
 @Dao
 public interface RecipeLogDAO {
@@ -30,5 +30,5 @@ public interface RecipeLogDAO {
     LiveData<RecipeLog> getRecipeById(int id);
 
     @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE + " WHERE userId == :userId")
-    LiveData<RecipeLog> getRecipesByUserId(int userId);
+    LiveData<List<RecipeLog>> getRecipesByUserId(int userId);
 }

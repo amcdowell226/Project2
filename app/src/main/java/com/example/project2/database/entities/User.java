@@ -1,11 +1,11 @@
-package database.entities;
+package com.example.project2.database.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
-import database.ProduceLogDatabase;
+import com.example.project2.database.ProduceLogDatabase;
 
 @Entity(tableName = ProduceLogDatabase.USER_TABLE)
 public class User {
