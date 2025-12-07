@@ -16,8 +16,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivityLandingPageBinding;
 
-import database.ProduceLogRepository;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+import com.example.project2.database.entities.User;
 
 public class LandingPage extends AppCompatActivity {
     private static final String LANDING_PAGE_ACTIVITY_USER_ID = "com.example.project2.MAIN_ACTIVITY_USER_ID";
