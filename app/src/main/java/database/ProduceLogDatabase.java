@@ -16,7 +16,7 @@ import database.entities.Product;
 import database.entities.RecipeLog;
 import database.entities.User;
 
-@Database(entities = {User.class, Product.class, RecipeLog.class}, version = 2)
+@Database(entities = {User.class, Product.class, RecipeLog.class}, version = 1)
 public abstract class ProduceLogDatabase extends RoomDatabase {
     public static final String USER_TABLE = "userTable";
     public static final String PRODUCT_TABLE = "productTable";
