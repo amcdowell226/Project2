@@ -11,6 +11,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.project2.databinding.ActivityLoginBinding;
 import com.example.project2.databinding.ActivityRecipeBinding;
 
+import java.util.List;
+import java.util.Random;
+
 import database.entities.RecipeLog;
 import database.entities.User;
 
@@ -29,6 +32,13 @@ public class RecipeActivity extends AppCompatActivity {
     private void makeRecipe(int id) {
         RecipeLog rl = new RecipeLog(id,
                 "brokie you cant afford no groceries");
+        List<String>
 
+        StringBuilder sb = new StringBuilder();
+        Random rand = new Random();
+
+
+
+        rl.setRecipe(sb.toString());
     }
 }

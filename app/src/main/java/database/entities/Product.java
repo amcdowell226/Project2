@@ -3,19 +3,29 @@ package database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import database.ProduceLogDatabase;
 
 @Entity(tableName = ProduceLogDatabase.PRODUCT_TABLE)
 public class Product {
+    private static final List<String> types = new ArrayList<>(
+            Arrays.asList("meat", "pasta", "vegetable", "fruit", "seasoning")
+    );
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private String type;
 
+
     public Product(String name, String type) {
         this.name = name;
+        if(!types.contains(type.toLowerCase())) {
+            type = "seasoning";
+        }
         this.type = type;
     }
 
