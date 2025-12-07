@@ -1,7 +1,6 @@
-package database;
+package com.example.project2.database;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -12,9 +11,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import database.entities.Product;
-import database.entities.RecipeLog;
-import database.entities.User;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
+import com.example.project2.database.entities.User;
 
 @Database(entities = {User.class, Product.class, RecipeLog.class}, version = 1)
 public abstract class ProduceLogDatabase extends RoomDatabase {

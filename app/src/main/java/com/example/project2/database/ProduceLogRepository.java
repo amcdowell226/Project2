@@ -1,7 +1,6 @@
-package database;
+package com.example.project2.database;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -10,9 +9,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import database.entities.Product;
-import database.entities.RecipeLog;
-import database.entities.User;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
+import com.example.project2.database.entities.User;
 
 public class ProduceLogRepository {
     private final UserDAO userDAO;

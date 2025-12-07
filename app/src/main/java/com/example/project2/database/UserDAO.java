@@ -1,4 +1,4 @@
-package database;
+package com.example.project2.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -9,7 +9,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import database.entities.User;
+import com.example.project2.database.entities.User;
 
 @Dao
 public interface UserDAO {
