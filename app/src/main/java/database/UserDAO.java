@@ -19,15 +19,15 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM " + "userTable" + " ORDER BY username")
+    @Query("SELECT * FROM " + ProduceLogDatabase.USER_TABLE + " ORDER BY username")
     LiveData<List<User>> getAllUsers();
 
-    @Query("DELETE from " + "userTable")
+    @Query("DELETE from " + ProduceLogDatabase.USER_TABLE)
     void deleteAll();
 
-    @Query("SELECT * from " + "userTable" + " WHERE username == :username")
+    @Query("SELECT * from " + ProduceLogDatabase.USER_TABLE + " WHERE username == :username")
     LiveData<User> getUserByUserName(String username);
 
-    @Query("SELECT * from " + "userTable" + " WHERE id == :userId")
+    @Query("SELECT * from " + ProduceLogDatabase.USER_TABLE + " WHERE id == :userId")
     LiveData<User> getUserByUserId(int userId);
 }

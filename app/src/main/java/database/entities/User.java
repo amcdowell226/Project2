@@ -5,7 +5,9 @@ import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
-@Entity(tableName = "userTable")
+import database.ProduceLogDatabase;
+
+@Entity(tableName = ProduceLogDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
