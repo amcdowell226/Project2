@@ -1,0 +1,34 @@
+package com.example.project2;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.example.project2.databinding.ActivityLoginBinding;
+import com.example.project2.databinding.ActivityRecipeBinding;
+
+import database.entities.RecipeLog;
+import database.entities.User;
+
+public class RecipeActivity extends AppCompatActivity {
+    private ActivityRecipeBinding binding;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityRecipeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+    }
+
+    private void makeRecipe(int id) {
+        RecipeLog rl = new RecipeLog(id,
+                "brokie you cant afford no groceries");
+
+    }
+}
