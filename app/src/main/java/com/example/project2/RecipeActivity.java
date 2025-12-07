@@ -25,6 +25,7 @@ import database.entities.User;
 
 public class RecipeActivity extends AppCompatActivity {
     private ActivityRecipeBinding binding;
+    private ProduceLogRepository repository;
 
 
     @Override
@@ -33,22 +34,26 @@ public class RecipeActivity extends AppCompatActivity {
         binding = ActivityRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        repository = ProduceLogRepository.getRepository(getApplication());
+
     }
 
     private void makeRecipe(int id) {
-        RecipeLog rl = new RecipeLog(id,
-                "brokie you cant afford no groceries");
-        HashMap<String, LiveData<ArrayList<Product>>> foods = new HashMap<>();
+        RecipeLog rl = new RecipeLog(id, "brokie you cant afford no groceries");
+        HashMap<String, LiveData<List<Product>>> foods = new HashMap<>();
         List<String> method = new ArrayList<>(Arrays.asList("Boil", "Simmer", "Fry", "Stir-Fry"));
         List<String> temp = new ArrayList<>(Arrays.asList("High", "Medium-High", "Medium", "Medium-Low", "Low"));
         List<String> mix = new ArrayList<>(Arrays.asList("mix", "stir"));
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
+        int rLength = rand.nextInt(10);
         for(String t : Product.types) {
-            foods.put(t, ProduceLogRepository.getAllProduceByType(t));
+            foods.put(t, repository.getAllProduceByType(t));
         }
 
-        for(int i = 0; i < rand.nextInt(5,10))
+        for(int i = 0; i < rLength; i++) {
+
+        }
 
 
 
