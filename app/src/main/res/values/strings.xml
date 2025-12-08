@@ -5,7 +5,9 @@
     <string name="go_to_shopping_list">Go to Shopping List</string>
     <string name="random_recipe_generator">Random Recipe Generator</string>
     <string name="admin_access">Admin Access</string>
-    <string name="main_title">Welcome to Recipe Generator!</string>
+    <string name="main_title">RECIPE GENERATOR!</string>
     <string name="loginPrompt">Login</string>
     <string name="newUserPrompt">Create Account</string>
+    <string name="signupUserHint">Enter a username</string>
+    <string name="signupPasswordHint">Enter a password</string>
 </resources>

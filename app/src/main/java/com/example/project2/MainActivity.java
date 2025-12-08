@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO: Detect if user has already logged in and set to true if so, skips this entire activity using sharedPreference
     // Context context = getActivity();
-    //SharedPreferences sharedPref = context.getSharedPreferences(
+    //SharedPreferences sharedPref = context.getSharedP/references(
     //getString(R.string.preference_file_key), Context.MODE_PRIVATE);
     boolean loggedIn = false;
 

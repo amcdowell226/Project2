@@ -1,18 +1,18 @@
-package database;
+package com.example.project2.database;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import database.entities.Product;
-import database.entities.RecipeLog;
-import database.entities.User;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
+import com.example.project2.database.entities.User;
 
 public class ProduceLogRepository {
     private final UserDAO userDAO;
@@ -74,7 +74,7 @@ public class ProduceLogRepository {
         return recipeLogDAO.getRecipeById(recipeId);
     }
 
-    public LiveData<RecipeLog> getRecipeByUserId(int userId) {
+    public LiveData<List<RecipeLog>> getRecipesByUserId(int userId) {
         return recipeLogDAO.getRecipesByUserId(userId);
     }
 
@@ -82,6 +82,13 @@ public class ProduceLogRepository {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
             userDAO.insert(user);
+        });
+    }
+
+    public void deleteUser(User user) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.delete(user);
         });
     }
 
