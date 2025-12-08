@@ -105,12 +105,16 @@ public class DBUnitTest {
         List<Product> produce = productDAO.getAllProduceList();
         assertFalse(produce.contains(pasta));
     }
-//
-//    @Test
-//    public void insertRecipe(){
-//
-//    }
-//
+
+    @Test
+    public void insertRecipe(){
+        RecipeLog test = new RecipeLog(100, "cookie");
+        recipeLogDAO.insert(test);
+        List <RecipeLog> recipes = recipeLogDAO.getAllRecipesList();
+        assertNotNull(recipes.get(0));
+
+    }
+
     @Test
     public void deleteRecipe(){
         RecipeLog recipeLog = new RecipeLog(1, "bacon, tomato, cheese");
@@ -120,9 +124,13 @@ public class DBUnitTest {
         recipeLogDAO.delete(recipeLog);
         assertFalse(logs.contains(recipeLog));
     }
-//
-//    @Test
-//    public void updateRecipe(){
-//
-//    }
+
+    @Test
+    public void updateRecipe(){
+        RecipeLog test = new RecipeLog(505, "burger");
+        recipeLogDAO.insert(test);
+        recipeLogDAO.updateRecipe("hotdog", 505);
+        List <RecipeLog> recipes = recipeLogDAO.getAllRecipesList();
+        assertFalse(recipes.contains(test));
+    }
 }
