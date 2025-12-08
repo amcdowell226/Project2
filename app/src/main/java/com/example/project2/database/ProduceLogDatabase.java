@@ -76,6 +76,21 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
                     pDAO.insert(spaghetti);
                     Product garlic = new Product("garlic", "seasoning");
                     pDAO.insert(garlic);
+
+                    RecipeLogDAO rDAO = INSTANCE.recipeLogDAO();
+                    rDAO.deleteAll();
+                    RecipeLog u0test1 = new RecipeLog(0, "Recipe 1 for user 0");
+                    RecipeLog u0test2 = new RecipeLog(0, "Recipe 2 for user 0");
+                    RecipeLog u0test3 = new RecipeLog(0, "Recipe 3 for user 0");
+                    rDAO.insert(u0test1, u0test2, u0test3);
+                    RecipeLog u1test1 = new RecipeLog(1, "Recipe 1 for user 1");
+                    RecipeLog u1test2 = new RecipeLog(1, "Recipe 2 for user 1");
+                    RecipeLog u1test3 = new RecipeLog(1, "Recipe 3 for user 1");
+                    rDAO.insert(u1test1, u1test2, u1test3);
+                    RecipeLog u2test1 = new RecipeLog(2, "Recipe 1 for user 2");
+                    RecipeLog u2test2 = new RecipeLog(2, "Recipe 2 for user 2");
+                    RecipeLog u2test3 = new RecipeLog(2, "Recipe 3 for user 2");
+                    rDAO.insert(u2test1, u2test2, u2test3);
                 });
             } catch (Exception e) {
                 System.out.println(e);

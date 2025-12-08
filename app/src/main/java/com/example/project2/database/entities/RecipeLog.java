@@ -18,9 +18,7 @@ public class RecipeLog {
     @NonNull
     @Override
     public String toString() {
-        return "RecipeLog{" +
-                "recipe='" + recipe + '\'' +
-                '}';
+        return "recipe='" + recipe + '\'';
     }
 
     public RecipeLog(int userId, String recipe) {

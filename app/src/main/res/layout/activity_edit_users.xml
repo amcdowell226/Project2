@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditUsersActivity">
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_margin="16dp"
+        android:id="@+id/titleUserCredentialsTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Enter user information"
+        android:textSize="32sp"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:hint="Username"
+        app:layout_constraintTop_toBottomOf="@id/titleUserCredentialsTextView"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/userNameChoiceEditText"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:inputType="text"
+        android:autofillHints="Please enter username"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:hint="Password"
+        app:layout_constraintTop_toBottomOf="@id/userNameChoiceEditText"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/passwordEditText"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:autofillHints="Please enter password"
+        android:inputType="textPassword"
+        />
+
+    <EditText
+        android:id="@+id/adminChoiceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="16dp"
+        android:hint="Admin? (y/n)"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:inputType="text"
+        android:autofillHints="Should be an admin or not?"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/addUserButton"
+        android:layout_width="150dp"
+        android:layout_height="105dp"
+        android:layout_margin="16dp"
+        android:text="Add User"
+        android:textSize="24sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adminChoiceEditText"
+        app:layout_constraintEnd_toStartOf="@id/deleteUserButton"
+        />
+
+    <Button
+        android:id="@+id/deleteUserButton"
+        android:layout_width="150dp"
+        android:layout_height="105dp"
+        android:layout_margin="16dp"
+        android:text="Delete User"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/adminChoiceEditText"
+        app:layout_constraintStart_toEndOf="@id/addUserButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

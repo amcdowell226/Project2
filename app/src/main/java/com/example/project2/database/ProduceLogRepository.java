@@ -78,7 +78,7 @@ public class ProduceLogRepository {
         return recipeLogDAO.getRecipeById(recipeId);
     }
 
-    public LiveData<RecipeLog> getRecipeByUserId(int userId) {
+    public LiveData<List<RecipeLog>> getRecipesByUserId(int userId) {
         return recipeLogDAO.getRecipesByUserId(userId);
     }
 
@@ -86,6 +86,13 @@ public class ProduceLogRepository {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
             userDAO.insert(user);
+        });
+    }
+
+    public void deleteUser(User user) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.delete(user);
         });
     }
 

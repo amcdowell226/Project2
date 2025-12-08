@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO: Detect if user has already logged in and set to true if so, skips this entire activity using sharedPreference
     // Context context = getActivity();
-    //SharedPreferences sharedPref = context.getSharedPreferences(
+    //SharedPreferences sharedPref = context.getSharedP/references(
     //getString(R.string.preference_file_key), Context.MODE_PRIVATE);
     boolean loggedIn = false;
 
@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }));
+
+        Button newUserPrompt = findViewById(R.id.newUserButton);
+        newUserPrompt.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        }));
+
+
+
     }
 
     static Intent mainActivityIntentFactory(Context context) {
