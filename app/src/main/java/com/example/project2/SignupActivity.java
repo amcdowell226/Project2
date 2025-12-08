@@ -39,13 +39,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void createUser() {
-        String username = String.valueOf(binding.usernameLayout);
+        String username = binding.usernameLayout.getEditText().getText().toString().trim();
         if (username.isEmpty()) {
             toastMaker("Username may not be blank.");
             return;
         }
 
-        String password = String.valueOf(binding.passwordLayout);
+        String password = binding.passwordLayout.getEditText().getText().toString().trim();
         if (password.isEmpty()) {
             toastMaker("Password may not be blank.");
             return;
@@ -53,14 +53,12 @@ public class SignupActivity extends AppCompatActivity {
 
         User newUser = new User(username, password);
 
-        LiveData<User> userObserver = repository.getUserByUserName(username);
-        userObserver.observe(this, user -> {
+        repository.getUserByUserName(username).observe(this, user -> {
             if (user != null) {
                 toastMaker("This user already exists.");
             } else {
-                // TODO: Make this connect properly when merged.
-//                repository.insertUser(newUser);
-                toastMaker("New user has been added!");
+                repository.insertUser(newUser);
+                toastMaker("New user added!");
             }
         });
     }
