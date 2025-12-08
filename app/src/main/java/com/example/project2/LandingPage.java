@@ -56,6 +56,13 @@ public class LandingPage extends AppCompatActivity {
 //            startActivity(intent);
 //        }
 
+        binding.buttonRandomRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(RecipeActivity.recipeActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
+
         updateSharedPreference();
     }
 
