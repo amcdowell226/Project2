@@ -8,6 +8,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,6 +27,9 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
     private static volatile ProduceLogDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final List<String> TYPES = new ArrayList<>(
+            Arrays.asList("meat", "pasta", "vegetable", "fruit", "seasoning")
+    );
 
     static ProduceLogDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -66,6 +72,10 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
                     pDAO.insert(apple);
                     Product tomato = new Product("tomato", "vegetable");
                     pDAO.insert(tomato);
+                    Product spaghetti = new Product("spaghetti", "pasta");
+                    pDAO.insert(spaghetti);
+                    Product garlic = new Product("garlic", "seasoning");
+                    pDAO.insert(garlic);
 
                     RecipeLogDAO rDAO = INSTANCE.recipeLogDAO();
                     rDAO.deleteAll();

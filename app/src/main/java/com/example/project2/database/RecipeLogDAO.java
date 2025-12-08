@@ -31,4 +31,7 @@ public interface RecipeLogDAO {
 
     @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE + " WHERE userId == :userId")
     LiveData<List<RecipeLog>> getRecipesByUserId(int userId);
+
+    @Query("UPDATE " + ProduceLogDatabase.RECIPES_TABLE + " SET recipe = :recipe WHERE id == :recipeId")
+    void updateRecipe(String recipe, int recipeId);
 }

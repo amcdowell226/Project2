@@ -54,6 +54,7 @@
         android:layout_height="80dp"
         android:text="Create Account"
         android:textSize="25dp"
+        android:fontFamily="times"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
