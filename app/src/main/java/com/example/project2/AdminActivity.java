@@ -30,7 +30,8 @@ public class AdminActivity extends AppCompatActivity {
         binding.editUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // something like sign up
+                Intent intent = new Intent(AdminActivity.this, EditUsersActivity.class);
+                startActivity(intent);
             }
         });
 
