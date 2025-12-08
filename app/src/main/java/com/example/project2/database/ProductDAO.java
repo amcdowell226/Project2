@@ -10,6 +10,7 @@ import androidx.room.Query;
 import java.util.List;
 
 import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.User;
 
 @Dao
 public interface ProductDAO {
@@ -27,6 +28,9 @@ public interface ProductDAO {
 
     @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE name == :productName")
     LiveData<Product> getProduceByName(String productName);
+
+    @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE)
+    List<Product> getAllProduceList();
 
     @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE type == :productType")
     LiveData<Product> getProduceByType(String productType);
