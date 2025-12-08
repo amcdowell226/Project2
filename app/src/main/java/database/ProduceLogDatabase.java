@@ -67,6 +67,10 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
                     pDAO.insert(apple);
                     Product tomato = new Product("tomato", "vegetable");
                     pDAO.insert(tomato);
+                    Product spaghetti = new Product("spaghetti", "pasta");
+                    pDAO.insert(spaghetti);
+                    Product garlic = new Product("garlic", "seasoning");
+                    pDAO.insert(garlic);
                 });
             } catch (Exception e) {
                 System.out.println(e);
