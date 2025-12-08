@@ -1,6 +1,6 @@
 package com.example.project2;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import android.content.Context;
 
@@ -49,12 +49,22 @@ public class DBUnitTest {
         userDAO.insert(user);
         List<User> users = userDAO.getAllUsersList();
         assertNotNull(users.get(0));
+        assertEquals("testTest", users.get(0).getUsername());
     }
 
-//    @Test
-//    public void deleteUser(){
-//
-//    }
+    @Test
+    public void deleteUser(){
+        User user = new User("testTest", "password");
+        User user2 = new User("test2", "test2");
+        userDAO.insert(user);
+        userDAO.insert(user2);
+        List<User> users = userDAO.getAllUsersList();
+        assertEquals(2, users.size());
+        userDAO.delete(user);
+        users = userDAO.getAllUsersList();
+        assertFalse(users.contains(user2));
+
+    }
 //
 //    @Test
 //    public void updateUser(){
