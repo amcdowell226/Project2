@@ -38,9 +38,6 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void setContentView(ConstraintLayout root) {
-    }
-
     private void createUser() {
         String username = String.valueOf(binding.usernameLayout);
         if (username.isEmpty()) {
