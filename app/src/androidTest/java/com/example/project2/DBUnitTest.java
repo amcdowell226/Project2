@@ -66,12 +66,16 @@ public class DBUnitTest {
         assertFalse(users.contains(user2));
 
     }
-//
-//    @Test
-//    public void updateUser(){
-//
-//    }
-//
+
+    @Test
+    public void updateUser(){
+        User user = new User("testTest", "password");
+        userDAO.insert(user);
+        userDAO.updateUserName("newName", 1);
+        List<User> users = userDAO.getAllUsersList();
+        assertFalse(users.contains(user));
+    }
+
     @Test
     public void insertProduct(){
         Product p = new Product("bow-tie", "pasta");
@@ -90,11 +94,15 @@ public class DBUnitTest {
         pro = productDAO.getAllProduceList();
         assertNull(pro);
     }
-//
-//    @Test
-//    public void updateProduct(){
-//
-//    }
+
+    @Test
+    public void updateProduct(){
+        Product pasta = new Product("bow-tie", "pasta");
+        productDAO.insert(pasta);
+        productDAO.updateProductName("spaghetti", 1);
+        List<Product> produce = productDAO.getAllProduceList();
+        assertFalse(produce.contains(pasta));
+    }
 //
 //    @Test
 //    public void insertRecipe(){
