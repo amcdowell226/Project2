@@ -40,4 +40,49 @@ public class DBUnitTest {
     public void closeDb() throws IOException {
         db.close();
     }
+
+    @Test
+    public void insertUser(){
+
+    }
+
+    @Test
+    public void deleteUser(){
+
+    }
+
+    @Test
+    public void updateUser(){
+
+    }
+
+    @Test
+    public void insertProduct(){
+
+    }
+
+    @Test
+    public void deleteProduct(){
+
+    }
+
+    @Test
+    public void updateProduct(){
+
+    }
+
+    @Test
+    public void insertRecipe(){
+
+    }
+
+    @Test
+    public void deleteRecipe(){
+
+    }
+
+    @Test
+    public void updateRecipe(){
+
+    }
 }
