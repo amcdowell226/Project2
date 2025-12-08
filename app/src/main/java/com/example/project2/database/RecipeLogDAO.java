@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.example.project2.database.entities.Product;
 import com.example.project2.database.entities.RecipeLog;
+import com.example.project2.database.entities.User;
 
 @Dao
 public interface RecipeLogDAO {
@@ -22,6 +23,9 @@ public interface RecipeLogDAO {
 
     @Query("SELECT * FROM " + ProduceLogDatabase.RECIPES_TABLE + " ORDER BY id")
     LiveData<List<Product>> getAllRecipes();
+
+    @Query("SELECT * from " + ProduceLogDatabase.RECIPES_TABLE)
+    List<RecipeLog> getAllRecipesList();
 
     @Query("DELETE from " + ProduceLogDatabase.RECIPES_TABLE)
     void deleteAll();

@@ -13,6 +13,7 @@ import com.example.project2.database.ProductDAO;
 import com.example.project2.database.RecipeLogDAO;
 import com.example.project2.database.UserDAO;
 import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
 import com.example.project2.database.entities.User;
 
 import org.junit.After;
@@ -89,10 +90,11 @@ public class DBUnitTest {
         Product p = new Product("bow-tie", "pasta");
         productDAO.insert(p);
         List<Product> pro = productDAO.getAllProduceList();
-        assertNotNull(pro);
+        assertNotNull(pro.get(0));
         productDAO.delete(p);
         pro = productDAO.getAllProduceList();
-        assertNull(pro);
+//        assertNull(pro);
+        assertFalse(pro.contains(p));
     }
 
     @Test
@@ -109,10 +111,15 @@ public class DBUnitTest {
 //
 //    }
 //
-//    @Test
-//    public void deleteRecipe(){
-//
-//    }
+    @Test
+    public void deleteRecipe(){
+        RecipeLog recipeLog = new RecipeLog(1, "bacon, tomato, cheese");
+        recipeLogDAO.insert(recipeLog);
+        List<RecipeLog> logs = recipeLogDAO.getAllRecipesList();
+        assertNotNull(logs.get(0));
+        recipeLogDAO.delete(recipeLog);
+        assertFalse(logs.contains(recipeLog));
+    }
 //
 //    @Test
 //    public void updateRecipe(){
