@@ -25,6 +25,9 @@ public interface UserDAO {
     @Query("DELETE from " + ProduceLogDatabase.USER_TABLE)
     void deleteAll();
 
+    @Query("SELECT * from " + ProduceLogDatabase.USER_TABLE)
+    List<User> getAllUsersList();
+
     @Query("SELECT * from " + ProduceLogDatabase.USER_TABLE + " WHERE username == :username")
     LiveData<User> getUserByUserName(String username);
 

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:text="Generate Random Recipe"
+        android:fontFamily="times"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +26,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         android:text="Generate"
+        android:fontFamily="times"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="100dp"
+        android:fontFamily="times"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

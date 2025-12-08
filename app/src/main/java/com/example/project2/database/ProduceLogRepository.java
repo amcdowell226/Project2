@@ -50,6 +50,9 @@ public class ProduceLogRepository {
         return null;
     }
 
+    public List<User> getAllUsersList(){
+        return userDAO.getAllUsersList();
+    }
     public LiveData<User> getUserByUserName(String username) {
         return userDAO.getUserByUserName(username);
     }
@@ -100,6 +103,13 @@ public class ProduceLogRepository {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
             productDAO.insert(product);
+        });
+    }
+
+    public void deleteProduct(Product product) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            productDAO.delete(product);
         });
     }
 
