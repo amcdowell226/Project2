@@ -68,6 +68,7 @@ public class EditProduceActivity extends AppCompatActivity {
             toastMaker("Produce needs a type");
             return;
         }
+        toastMaker(pName + " has been added!");
 
         Product p = new Product(pName, pType);
         repository.insertProduct(p);

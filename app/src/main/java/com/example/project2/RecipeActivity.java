@@ -26,7 +26,7 @@ public class RecipeActivity extends AppCompatActivity {
     private ActivityRecipeBinding binding;
     private ProduceLogRepository repository;
     private int loggedInUserId;
-    private HashMap<String, List<Product>> foods = new HashMap<>();
+    private HashMap<String, List<Product>> foods;
     private List<String> method = new ArrayList<>(Arrays.asList("Boil", "Simmer", "Fry", "Stir-Fry"));
     private List<String> temp = new ArrayList<>(Arrays.asList("High", "Medium-High", "Medium", "Medium-Low", "Low"));
     private List<String> mix = new ArrayList<>(Arrays.asList("Mix", "Stir"));
@@ -39,7 +39,7 @@ public class RecipeActivity extends AppCompatActivity {
         binding = ActivityRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         loggedInUserId = getIntent().getIntExtra("loggedIn_UserId_RecipeActivity", -1);
-
+        foods = new HashMap<>();
         repository = ProduceLogRepository.getRepository(getApplication());
 
         binding.generateButton.setEnabled(false);
