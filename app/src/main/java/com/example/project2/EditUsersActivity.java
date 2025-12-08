@@ -3,25 +3,20 @@ package com.example.project2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivityEditUsersBinding;
 
-import database.ProduceLogDatabase;
-import database.ProduceLogRepository;
-import database.UserDAO;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+
+import com.example.project2.database.entities.User;
 
 public class EditUsersActivity extends AppCompatActivity {
 
@@ -77,7 +72,7 @@ public class EditUsersActivity extends AppCompatActivity {
                 toastMaker("This user already exists.");
                 binding.userNameChoiceEditText.setSelection(0);
             } else {
-                repository.insert(newUser);
+                repository.insertUser(newUser);
                 toastMaker("New user has been added!");
             }
         });
@@ -97,7 +92,7 @@ public class EditUsersActivity extends AppCompatActivity {
         LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
             if(user != null){
-                repository.delete(user);
+                repository.deleteUser(user);
                 toastMaker("User has been deleted!");
             } else {
                 toastMaker("This user does not exist."); // this gets repeated after deletion, dunno why

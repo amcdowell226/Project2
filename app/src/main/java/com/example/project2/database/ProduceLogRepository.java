@@ -85,6 +85,13 @@ public class ProduceLogRepository {
         });
     }
 
+    public void deleteUser(User user) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.delete(user);
+        });
+    }
+
     public void insertProduct(Product... product) {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
