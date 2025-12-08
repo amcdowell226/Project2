@@ -31,6 +31,9 @@ public interface ProductDAO {
     @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE type == :productType")
     LiveData<Product> getProduceByType(String productType);
 
+    @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE type == :productType")
+    LiveData<List<Product>> getAllProduceByType(String productType);
+
     @Query("SELECT * from " + ProduceLogDatabase.PRODUCT_TABLE + " WHERE id == :productId")
     LiveData<Product> getProduceByProductId(int productId);
 }

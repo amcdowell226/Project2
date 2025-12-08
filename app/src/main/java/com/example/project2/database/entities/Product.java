@@ -1,8 +1,12 @@
 package com.example.project2.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import com.example.project2.database.ProduceLogDatabase;
@@ -14,8 +18,19 @@ public class Product {
     private String name;
     private String type;
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
     public Product(String name, String type) {
         this.name = name;
+        if(!ProduceLogDatabase.TYPES.contains(type.toLowerCase())) {
+            type = "seasoning";
+        }
         this.type = type;
     }
 
@@ -52,6 +67,9 @@ public class Product {
     }
 
     public void setType(String type) {
+        if(!ProduceLogDatabase.TYPES.contains(type.toLowerCase())) {
+            type = "seasoning";
+        }
         this.type = type;
     }
 }
