@@ -12,7 +12,7 @@
         android:layout_margin="8dp"
         android:padding="2dp"
         android:text="No recipes saved yet."
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:fontFamily="times"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

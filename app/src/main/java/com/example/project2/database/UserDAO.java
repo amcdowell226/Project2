@@ -33,4 +33,7 @@ public interface UserDAO {
 
     @Query("SELECT * from " + ProduceLogDatabase.USER_TABLE + " WHERE id == :userId")
     LiveData<User> getUserByUserId(int userId);
+
+    @Query("UPDATE " + ProduceLogDatabase.USER_TABLE + " SET username = :username WHERE id == :userId")
+    void updateUserName(String username, int userId);
 }
