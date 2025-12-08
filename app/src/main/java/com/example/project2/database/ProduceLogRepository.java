@@ -103,6 +103,13 @@ public class ProduceLogRepository {
         });
     }
 
+    public void deleteProduct(Product product) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            productDAO.delete(product);
+        });
+    }
+
     public void insertRecipe(RecipeLog recipe) {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
