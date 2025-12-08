@@ -83,6 +83,13 @@ public class LandingPage extends AppCompatActivity {
                 binding.HelloUsername.setText(this.user.getUsername());
                 if (this.user.isAdmin()) {
                     binding.buttonAdminAccess.setVisibility(View.VISIBLE);
+
+                    binding.buttonAdminAccess.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(AdminActivity.adminIntentFactory(getApplicationContext()));
+                        }
+                    });
                 }
             }
         });
@@ -125,10 +132,18 @@ public class LandingPage extends AppCompatActivity {
             return false;
         }
 
-        if (user.isAdmin()) {
-            MenuItem adminBtn = menu.findItem(R.id.buttonAdminAccess);
-            adminBtn.setVisible(true);
-        }
+//        if (user.isAdmin()) {
+//            MenuItem adminBtn = menu.findItem(R.id.buttonAdminAccess);
+//            adminBtn.setVisible(true);
+//
+//            adminBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//                @Override
+//                public boolean onMenuItemClick(@NonNull MenuItem item) {
+//                    startAdminPage();
+//                    return false;
+//                }
+//            });
+//        }
         return true;
     }
 
