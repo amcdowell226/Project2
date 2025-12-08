@@ -41,9 +41,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.core)
-    implementation(libs.ext.junit)
-    testImplementation("junit:junit:$4")
+//    implementation(libs.core)
+    implementation(libs.androidx.junit)
+    testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     val room_version = "2.8.3"

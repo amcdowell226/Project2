@@ -50,6 +50,9 @@ public class ProduceLogRepository {
         return null;
     }
 
+    public List<User> getAllUsersList(){
+        return userDAO.getAllUsersList();
+    }
     public LiveData<User> getUserByUserName(String username) {
         return userDAO.getUserByUserName(username);
     }
