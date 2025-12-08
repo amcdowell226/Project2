@@ -1,5 +1,6 @@
-package database.entities;
+package com.example.project2.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -8,22 +9,26 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import database.ProduceLogDatabase;
+import com.example.project2.database.ProduceLogDatabase;
 
 @Entity(tableName = ProduceLogDatabase.PRODUCT_TABLE)
 public class Product {
-    public static final List<String> types = new ArrayList<>(
-            Arrays.asList("meat", "pasta", "vegetable", "fruit", "seasoning")
-    );
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private String type;
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 
     public Product(String name, String type) {
         this.name = name;
-        if(!types.contains(type.toLowerCase())) {
+        if(!ProduceLogDatabase.TYPES.contains(type.toLowerCase())) {
             type = "seasoning";
         }
         this.type = type;
@@ -62,7 +67,7 @@ public class Product {
     }
 
     public void setType(String type) {
-        if(!types.contains(type.toLowerCase())) {
+        if(!ProduceLogDatabase.TYPES.contains(type.toLowerCase())) {
             type = "seasoning";
         }
         this.type = type;

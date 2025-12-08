@@ -1,7 +1,6 @@
-package database;
+package com.example.project2.database;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -9,12 +8,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import database.entities.Product;
-import database.entities.RecipeLog;
-import database.entities.User;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
+import com.example.project2.database.entities.User;
 
 @Database(entities = {User.class, Product.class, RecipeLog.class}, version = 1)
 public abstract class ProduceLogDatabase extends RoomDatabase {
@@ -25,6 +27,9 @@ public abstract class ProduceLogDatabase extends RoomDatabase {
     private static volatile ProduceLogDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final List<String> TYPES = new ArrayList<>(
+            Arrays.asList("meat", "pasta", "vegetable", "fruit", "seasoning")
+    );
 
     static ProduceLogDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

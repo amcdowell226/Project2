@@ -6,14 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.lifecycle.LiveData;
 
-import com.example.project2.databinding.ActivityLoginBinding;
+import com.example.project2.database.ProduceLogDatabase;
 import com.example.project2.databinding.ActivityRecipeBinding;
 
 import java.util.ArrayList;
@@ -23,10 +18,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import database.ProduceLogRepository;
-import database.entities.Product;
-import database.entities.RecipeLog;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+import com.example.project2.database.entities.Product;
+import com.example.project2.database.entities.RecipeLog;
 
 public class RecipeActivity extends AppCompatActivity {
     private ActivityRecipeBinding binding;
@@ -50,10 +44,13 @@ public class RecipeActivity extends AppCompatActivity {
 
         binding.generateButton.setEnabled(false);
 
-        for (String t : Product.types) {
+        for (String t : ProduceLogDatabase.TYPES) {
             repository.getAllProduceByType(t).observe(this, products -> {
                 if (products != null && !products.isEmpty()) {
+                    Log.d("inputting t and products into hashmap", "Types: " + t + " products: " + products);
+                    Log.d("foods before update ", foods.toString());
                     foods.put(t, products);
+                    Log.d("foods after update ", foods.toString());
                 }
                 checkIfAllDataLoaded();
             });
@@ -84,9 +81,9 @@ public class RecipeActivity extends AppCompatActivity {
 
         int rLength = rand.nextInt(10);
         for(int i = 0; i < rLength; i++) {
-            String cType = Product.types.get(rand.nextInt(Product.types.size()));
+            String cType = ProduceLogDatabase.TYPES.get(rand.nextInt(ProduceLogDatabase.TYPES.size()));
             String cFood = Objects.requireNonNull(foods.get(cType)).get(rand.nextInt(Objects.requireNonNull(foods.get(cType)).size())).getName();
-            String cType2 = Product.types.get(rand.nextInt(Product.types.size()));;
+            String cType2 = ProduceLogDatabase.TYPES.get(rand.nextInt(ProduceLogDatabase.TYPES.size()));;
             String cFood2 = Objects.requireNonNull(foods.get(cType2)).get(rand.nextInt(Objects.requireNonNull(foods.get(cType2)).size())).getName();
             if(i%2 == 0) {
                 sb.append(method.get(rand.nextInt(method.size())));
@@ -105,7 +102,7 @@ public class RecipeActivity extends AppCompatActivity {
     }
 
     private void checkIfAllDataLoaded() {
-        if (foods.keySet().containsAll(Product.types)) {
+        if (foods.keySet().containsAll(ProduceLogDatabase.TYPES)) {
             dataLoaded = true;
             binding.generateButton.setEnabled(true);
         }
