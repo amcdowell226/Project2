@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project2.databinding.ActivityAdminBinding;
 
-import database.ProduceLogRepository;
+import com.example.project2.database.ProduceLogRepository;
 
 public class AdminActivity extends AppCompatActivity {
     private ActivityAdminBinding binding;

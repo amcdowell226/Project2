@@ -14,8 +14,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivitySignupBinding;
 
-import database.ProduceLogRepository;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+import com.example.project2.database.entities.User;
 
 
 public class SignupActivity extends AppCompatActivity {

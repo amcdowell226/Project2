@@ -83,6 +83,13 @@ public class LandingPage extends AppCompatActivity {
                 binding.HelloUsername.setText(this.user.getUsername());
                 if (this.user.isAdmin()) {
                     binding.buttonAdminAccess.setVisibility(View.VISIBLE);
+
+                    binding.buttonAdminAccess.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(AdminActivity.adminIntentFactory(getApplicationContext()));
+                        }
+                    });
                 }
             }
         });
