@@ -66,6 +66,10 @@ public class ProduceLogRepository {
         return productDAO.getProduceByType(productType);
     }
 
+    public LiveData<List<Product>> getAllProduceByType(String productType) {
+        return productDAO.getAllProduceByType(productType);
+    }
+
     public LiveData<Product> getProduceByProductId(int productId) {
         return productDAO.getProduceByProductId(productId);
     }
