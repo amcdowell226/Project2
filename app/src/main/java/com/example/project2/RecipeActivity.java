@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import database.entities.User;
 public class RecipeActivity extends AppCompatActivity {
     private ActivityRecipeBinding binding;
     private ProduceLogRepository repository;
+    private int loggedInUserId;
 
 
     @Override
@@ -36,10 +38,24 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        loggedInUserId = getIntent().getIntExtra("loggedIn_UserId_RecipeActivity", -1);
 
         repository = ProduceLogRepository.getRepository(getApplication());
-        makeRecipe(1);
 
+        binding.backButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(LandingPage.landingActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
+
+        binding.generateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String currRecipe = makeRecipe(loggedInUserId);
+                binding.randomRecipeView.setText(currRecipe);
+            }
+        });
     }
 
     private String makeRecipe(int id) {
@@ -74,8 +90,6 @@ public class RecipeActivity extends AppCompatActivity {
                 sb.append(cFood2).append("\n");
             }
         }
-
-
 
         rl.setRecipe(sb.toString());
         return rl.getRecipe();
