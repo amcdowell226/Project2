@@ -98,6 +98,7 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
         rl.setRecipe(sb.toString());
+        repository.insertRecipe(rl);
         return rl.getRecipe();
     }
 
