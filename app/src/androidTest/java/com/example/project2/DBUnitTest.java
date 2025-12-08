@@ -12,6 +12,7 @@ import com.example.project2.database.ProduceLogDatabase;
 import com.example.project2.database.ProductDAO;
 import com.example.project2.database.RecipeLogDAO;
 import com.example.project2.database.UserDAO;
+import com.example.project2.database.entities.Product;
 import com.example.project2.database.entities.User;
 
 import org.junit.After;
@@ -71,15 +72,24 @@ public class DBUnitTest {
 //
 //    }
 //
-//    @Test
-//    public void insertProduct(){
-//
-//    }
-//
-//    @Test
-//    public void deleteProduct(){
-//
-//    }
+    @Test
+    public void insertProduct(){
+        Product p = new Product("bow-tie", "pasta");
+        productDAO.insert(p);
+        List<Product> pro = productDAO.getAllProduceList();
+        assertNotNull(pro);
+    }
+
+    @Test
+    public void deleteProduct(){
+        Product p = new Product("bow-tie", "pasta");
+        productDAO.insert(p);
+        List<Product> pro = productDAO.getAllProduceList();
+        assertNotNull(pro);
+        productDAO.delete(p);
+        pro = productDAO.getAllProduceList();
+        assertNull(pro);
+    }
 //
 //    @Test
 //    public void updateProduct(){
