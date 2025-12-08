@@ -11,8 +11,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivityLoginBinding;
 
-import database.ProduceLogRepository;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+import com.example.project2.database.entities.User;
 
 
 public class LoginActivity extends AppCompatActivity {

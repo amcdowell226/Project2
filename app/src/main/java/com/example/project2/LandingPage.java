@@ -16,8 +16,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.project2.databinding.ActivityLandingPageBinding;
 
-import database.ProduceLogRepository;
-import database.entities.User;
+import com.example.project2.database.ProduceLogRepository;
+import com.example.project2.database.entities.User;
 
 public class LandingPage extends AppCompatActivity {
     private static final String LANDING_PAGE_ACTIVITY_USER_ID = "com.example.project2.MAIN_ACTIVITY_USER_ID";
@@ -48,13 +48,13 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
-        // Seemingly we don't need the chunk below.
+        binding.buttonSavedRecipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(SavedRecipes.savedRecipesActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
 
-        //User is not logged in at this point, go to login screen
-//        if (loggedInUserId == -1) {
-//            Intent intent = MainActivity.loginIntentFactory(getApplicationContext());
-//            startActivity(intent);
-//        }
         updateSharedPreference();
     }
 
@@ -128,19 +128,9 @@ public class LandingPage extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.buttonLogOut);
-        item.setVisible(true);
         if (user == null) {
             return false;
         }
-        item.setTitle(user.getUsername());
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
-                showLogoutDialog();
-                return false;
-            }
-        });
 
 //        if (user.isAdmin()) {
 //            MenuItem adminBtn = menu.findItem(R.id.buttonAdminAccess);
