@@ -70,6 +70,10 @@ public class ProduceLogRepository {
         return productDAO.getProduceByType(productType);
     }
 
+    public LiveData<List<Product>> getAllProduceByType(String productType) {
+        return productDAO.getAllProduceByType(productType);
+    }
+
     public LiveData<Product> getProduceByProductId(int productId) {
         return productDAO.getProduceByProductId(productId);
     }
@@ -100,6 +104,13 @@ public class ProduceLogRepository {
         ProduceLogDatabase.databaseWriteExecutor.execute(() ->
         {
             productDAO.insert(product);
+        });
+    }
+
+    public void deleteProduct(Product product) {
+        ProduceLogDatabase.databaseWriteExecutor.execute(() ->
+        {
+            productDAO.delete(product);
         });
     }
 

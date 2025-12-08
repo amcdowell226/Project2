@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }));
+
+        Button newUserPrompt = findViewById(R.id.newUserButton);
+        newUserPrompt.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        }));
+
+
+
     }
 
     static Intent mainActivityIntentFactory(Context context) {

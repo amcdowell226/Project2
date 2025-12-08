@@ -35,7 +35,13 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-
+        binding.editProduceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, EditProduceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     static Intent adminIntentFactory(Context context){

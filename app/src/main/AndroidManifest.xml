@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project2">
         <activity
+            android:name=".EditProduceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
